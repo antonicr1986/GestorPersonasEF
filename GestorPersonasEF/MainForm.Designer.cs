@@ -39,6 +39,7 @@
             comboBoxOrden = new ComboBox();
             checkBoxDescendente = new CheckBox();
             buttonOrdenar = new Button();
+            buttonExportarCSV = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             // 
             // buttonCargar
             // 
-            buttonCargar.Location = new Point(155, 333);
+            buttonCargar.Location = new Point(37, 332);
             buttonCargar.Name = "buttonCargar";
             buttonCargar.Size = new Size(75, 23);
             buttonCargar.TabIndex = 1;
@@ -63,7 +64,7 @@
             // 
             // buttonAgregar
             // 
-            buttonAgregar.Location = new Point(269, 333);
+            buttonAgregar.Location = new Point(133, 370);
             buttonAgregar.Name = "buttonAgregar";
             buttonAgregar.Size = new Size(75, 23);
             buttonAgregar.TabIndex = 2;
@@ -73,7 +74,7 @@
             // 
             // buttonEliminar
             // 
-            buttonEliminar.Location = new Point(382, 333);
+            buttonEliminar.Location = new Point(230, 370);
             buttonEliminar.Name = "buttonEliminar";
             buttonEliminar.Size = new Size(75, 23);
             buttonEliminar.TabIndex = 3;
@@ -83,7 +84,7 @@
             // 
             // buttonGuardar
             // 
-            buttonGuardar.Location = new Point(36, 333);
+            buttonGuardar.Location = new Point(36, 370);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(75, 23);
             buttonGuardar.TabIndex = 4;
@@ -138,12 +139,23 @@
             buttonOrdenar.UseVisualStyleBackColor = true;
             buttonOrdenar.Click += buttonOrdenar_Click;
             // 
+            // buttonExportarCSV
+            // 
+            buttonExportarCSV.Location = new Point(133, 332);
+            buttonExportarCSV.Name = "buttonExportarCSV";
+            buttonExportarCSV.Size = new Size(104, 23);
+            buttonExportarCSV.TabIndex = 11;
+            buttonExportarCSV.Text = "Exportar a CSV";
+            buttonExportarCSV.UseVisualStyleBackColor = true;
+            buttonExportarCSV.Click += this.buttonExportarCSV_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(484, 374);
+            ClientSize = new Size(484, 427);
+            Controls.Add(buttonExportarCSV);
             Controls.Add(buttonOrdenar);
             Controls.Add(checkBoxDescendente);
             Controls.Add(comboBoxOrden);
@@ -176,5 +188,6 @@
         private ComboBox comboBoxOrden;
         private CheckBox checkBoxDescendente;
         private Button buttonOrdenar;
+        private Button buttonExportarCSV;
     }
 }

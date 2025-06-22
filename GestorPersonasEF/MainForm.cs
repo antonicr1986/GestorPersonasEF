@@ -147,6 +147,50 @@ namespace GestorPersonasEF
             }
         }
 
+        private void buttonExportarCSV_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Exportar a CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "CSV files (*.csv)|*.csv",
+                FileName = "Personas.csv"
+            };
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using StreamWriter sw = new StreamWriter(sfd.FileName);
+
+                    // Escribir encabezados
+                    var headers = dataGridView1.Columns.Cast<DataGridViewColumn>();
+                    sw.WriteLine(string.Join(",", headers.Select(col => col.HeaderText)));
+
+                    // Escribir filas
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            var values = row.Cells.Cast<DataGridViewCell>().Select(cell =>
+                                cell.Value?.ToString()?.Replace(",", ";")); // Reemplaza comas dentro de los valores
+                            sw.WriteLine(string.Join(",", values));
+                        }
+                    }
+
+                    MessageBox.Show("Datos exportados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al exportar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void AjustarTamañoTotalDataGridView()
         {
             AjustarTamañoAnchoDataGridView();
